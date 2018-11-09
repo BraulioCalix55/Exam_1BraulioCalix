@@ -16,7 +16,7 @@ public class libros {
     private int punt;
     private int copias;
     private String genero;
-    private double valor;
+    private int valor;
     private String edicion;
     private String autor;
     private String anio;
@@ -24,7 +24,7 @@ public class libros {
     public libros() {
     }
 
-    public libros(String titulo, String descrip, int punt, int copias, String genero, double valor, String edicion, String autor, String anio) {
+    public libros(String titulo, String descrip, int punt, int copias, String genero, int valor, String edicion, String autor, String anio) {
         this.titulo = titulo;
         this.descrip = descrip;
         this.punt = punt;
@@ -76,11 +76,11 @@ public class libros {
         this.genero = genero;
     }
 
-    public double getValor() {
+    public int getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(int valor) {
         this.valor = valor;
     }
 
