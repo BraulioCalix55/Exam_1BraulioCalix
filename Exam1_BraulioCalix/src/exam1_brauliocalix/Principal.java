@@ -6,6 +6,8 @@
 package exam1_brauliocalix;
 
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -43,18 +45,18 @@ public class Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        cr_fecha = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        cr_user = new javax.swing.JTextField();
+        cr_contra = new javax.swing.JTextField();
+        cr_num = new javax.swing.JTextField();
+        cr_corre = new javax.swing.JTextField();
+        cr_nombre = new javax.swing.JTextField();
+        cr_gene = new javax.swing.JComboBox<>();
+        crUSU = new javax.swing.JButton();
         ad_nuevo = new javax.swing.JDialog();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -74,10 +76,13 @@ public class Principal extends javax.swing.JFrame {
         nu_edi = new javax.swing.JTextField();
         nu_auto = new javax.swing.JTextField();
         nu_publi = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        nu_libro = new javax.swing.JButton();
         nu_titu = new javax.swing.JTextField();
         ad_modi = new javax.swing.JDialog();
+        cb_libros = new javax.swing.JComboBox<>();
         ad_elimi = new javax.swing.JDialog();
+        cb_elim = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         ta_usu = new javax.swing.JTextField();
@@ -93,8 +98,18 @@ public class Principal extends javax.swing.JFrame {
         });
 
         bt_modificar.setText("modificar");
+        bt_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_modificarMouseClicked(evt);
+            }
+        });
 
         bt_eliminar.setText("eliminar");
+        bt_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_eliminarMouseClicked(evt);
+            }
+        });
 
         jLabel3.setText("MENU DEL ADMIN");
 
@@ -144,6 +159,8 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel7.setText("fecha");
 
+        cr_fecha.setDateFormatString("dd,MM,yy");
+
         jLabel8.setText("numero");
 
         jLabel9.setText("correo");
@@ -152,9 +169,14 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel11.setText("genero de lectura");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fantasia", "Romance", "Accion", "Historia" }));
+        cr_gene.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fantasia", "Romance", "Accion", "Historia" }));
 
-        jButton1.setText("Registrarse");
+        crUSU.setText("Registrarse");
+        crUSU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crUSUMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout crearcuentaLayout = new javax.swing.GroupLayout(crearcuenta.getContentPane());
         crearcuenta.getContentPane().setLayout(crearcuentaLayout);
@@ -177,22 +199,22 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(jLabel9))
                                 .addGap(27, 27, 27)
                                 .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
+                                    .addComponent(cr_user)
+                                    .addComponent(cr_contra)
+                                    .addComponent(cr_num)
+                                    .addComponent(cr_corre)
+                                    .addComponent(cr_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
                             .addGroup(crearcuentaLayout.createSequentialGroup()
                                 .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel11))
                                 .addGap(28, 28, 28)
                                 .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField5)
-                                    .addComponent(jComboBox1, 0, 146, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(53, 53, 53))
+                                    .addComponent(cr_nombre)
+                                    .addComponent(cr_gene, 0, 146, Short.MAX_VALUE))
+                                .addGap(27, 27, 27)
+                                .addComponent(crUSU, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         crearcuentaLayout.setVerticalGroup(
             crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,38 +224,38 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cr_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cr_contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cr_fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(29, 29, 29)
                 .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cr_num, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cr_corre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(crearcuentaLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(cr_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(crearcuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52))
+                            .addComponent(cr_gene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crearcuentaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))))
+                        .addComponent(crUSU, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))))
         );
 
         jLabel12.setText("titulo");
@@ -248,7 +270,7 @@ public class Principal extends javax.swing.JFrame {
         nu_desc.setRows(5);
         jScrollPane1.setViewportView(nu_desc);
 
-        nu_punt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        nu_punt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         nu_gener.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fantasia", "Romance", "Accion", "Historia" }));
 
@@ -262,10 +284,10 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel20.setText("año de publicacion");
 
-        jButton2.setText("crear libro");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        nu_libro.setText("crear libro");
+        nu_libro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                nu_libroMouseClicked(evt);
             }
         });
 
@@ -326,7 +348,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(66, 66, 66))))
             .addGroup(ad_nuevoLayout.createSequentialGroup()
                 .addGap(308, 308, 308)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nu_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         ad_nuevoLayout.setVerticalGroup(
@@ -370,30 +392,58 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel19)
                             .addComponent(nu_auto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(57, 57, 57)
-                .addComponent(jButton2)
+                .addComponent(nu_libro)
                 .addContainerGap(93, Short.MAX_VALUE))
         );
+
+        cb_libros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout ad_modiLayout = new javax.swing.GroupLayout(ad_modi.getContentPane());
         ad_modi.getContentPane().setLayout(ad_modiLayout);
         ad_modiLayout.setHorizontalGroup(
             ad_modiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(ad_modiLayout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(cb_libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         ad_modiLayout.setVerticalGroup(
             ad_modiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(ad_modiLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(cb_libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
+
+        jButton1.setText("eliminar el libro selecionado");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout ad_elimiLayout = new javax.swing.GroupLayout(ad_elimi.getContentPane());
         ad_elimi.getContentPane().setLayout(ad_elimiLayout);
         ad_elimiLayout.setHorizontalGroup(
             ad_elimiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(ad_elimiLayout.createSequentialGroup()
+                .addGroup(ad_elimiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ad_elimiLayout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jButton1))
+                    .addGroup(ad_elimiLayout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(cb_elim, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         ad_elimiLayout.setVerticalGroup(
             ad_elimiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(ad_elimiLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(cb_elim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94)
+                .addComponent(jButton1)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -491,10 +541,10 @@ public class Principal extends javax.swing.JFrame {
         crearcuenta.setVisible(true);
     }//GEN-LAST:event_bt_notiMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void nu_libroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nu_libroMouseClicked
         String titulo = nu_titu.getText();
         String descrp = nu_desc.getText();
-        int punta = (int) nu_punt.getSelectedItem();
+        int punta = nu_punt.getSelectedIndex() + 1;
         int cop = Integer.parseInt(nu_copi.getText());
         String gene = (String) nu_gener.getSelectedItem();
         int valor = Integer.parseInt(nu_valor.getText());
@@ -502,14 +552,19 @@ public class Principal extends javax.swing.JFrame {
         String autor = nu_auto.getText();
         String año = nu_publi.getText();
         try {
-            libs.add(new libros(titulo, descrp, punta, cop, gene, valor, edicio, autor, año));
+            libros x = new libros(titulo, descrp, punta, cop, gene, valor, edicio, autor, año);
+            libs.add(x);
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_libros.getModel();
+            modelo.addElement(x);
+            cb_elim.setModel(modelo);
+            cb_libros.setModel(modelo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(ad_nuevo, "hubo un problema para crear el libro");
         }
         JOptionPane.showMessageDialog(ad_nuevo, "se agrego de forma exitosa");
-        ad_nuevo.dispose();
 
-    }//GEN-LAST:event_jButton2MouseClicked
+        ad_nuevo.dispose();
+    }//GEN-LAST:event_nu_libroMouseClicked
 
     private void bt_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarMouseClicked
         ad_nuevo.setModal(true);
@@ -520,6 +575,53 @@ public class Principal extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         Admin.dispose();
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void crUSUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crUSUMouseClicked
+        // TODO add your handling code here:
+        String user = "";
+        try {
+            user = cr_user.getText();
+            if (user.equals("admin")) {
+
+            } else {
+                JOptionPane.showMessageDialog(crearcuenta, "no se puede llamar asi");
+            }
+        } catch (Exception e) {
+        }
+
+        String cont = cr_contra.getText();
+        Date fecha = cr_fecha.getDate();
+        String num = cr_num.getText();
+        String corre = cr_corre.getText();
+        String nombre = cr_nombre.getText();
+        ArrayList<usuarios> ami = new ArrayList<>();
+        ArrayList<libros> libos = new ArrayList<>();
+        usu.add(new usuarios(user, cont, corre, nombre, corre, nombre, user, ami, libos));
+        cr_contra.setText("");
+        cr_corre.setText("");
+        crearcuenta.dispose();
+    }//GEN-LAST:event_crUSUMouseClicked
+
+    private void bt_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_modificarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_modificarMouseClicked
+
+    private void bt_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_eliminarMouseClicked
+        // TODO add your handling code here:
+        ad_elimi.setModal(true);
+        ad_elimi.pack();
+        ad_elimi.setVisible(true);
+    }//GEN-LAST:event_bt_eliminarMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        int num = cb_elim.getSelectedIndex();
+        num = num - 4;
+
+        libs.remove(num);
+        ad_elimi.dispose();
+        JOptionPane.showMessageDialog(ad_elimi, "se elimino de forma correcta");
+        ad_elimi.dispose();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -566,12 +668,19 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_ingre;
     private javax.swing.JButton bt_modificar;
     private javax.swing.JButton bt_noti;
+    private javax.swing.JComboBox<String> cb_elim;
+    private javax.swing.JComboBox<String> cb_libros;
+    private javax.swing.JButton crUSU;
+    private javax.swing.JTextField cr_contra;
+    private javax.swing.JTextField cr_corre;
+    private com.toedter.calendar.JDateChooser cr_fecha;
+    private javax.swing.JComboBox<String> cr_gene;
+    private javax.swing.JTextField cr_nombre;
+    private javax.swing.JTextField cr_num;
+    private javax.swing.JTextField cr_user;
     private javax.swing.JDialog crearcuenta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -593,16 +702,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField nu_auto;
     private javax.swing.JTextField nu_copi;
     private javax.swing.JTextArea nu_desc;
     private javax.swing.JTextField nu_edi;
     private javax.swing.JComboBox<String> nu_gener;
+    private javax.swing.JButton nu_libro;
     private javax.swing.JTextField nu_publi;
     private javax.swing.JComboBox<String> nu_punt;
     private javax.swing.JTextField nu_titu;
