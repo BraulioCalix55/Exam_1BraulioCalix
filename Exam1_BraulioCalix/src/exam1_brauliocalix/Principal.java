@@ -80,9 +80,12 @@ public class Principal extends javax.swing.JFrame {
         nu_titu = new javax.swing.JTextField();
         ad_modi = new javax.swing.JDialog();
         cb_libros = new javax.swing.JComboBox<>();
+        modifica = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
         ad_elimi = new javax.swing.JDialog();
         cb_elim = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        modificar = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         ta_usu = new javax.swing.JTextField();
@@ -396,23 +399,42 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(93, Short.MAX_VALUE))
         );
 
-        cb_libros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        modifica.setText("modificar");
+        modifica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificaMouseClicked(evt);
+            }
+        });
+
+        jLabel21.setText("selecione la pelicula que quiere modificar");
 
         javax.swing.GroupLayout ad_modiLayout = new javax.swing.GroupLayout(ad_modi.getContentPane());
         ad_modi.getContentPane().setLayout(ad_modiLayout);
         ad_modiLayout.setHorizontalGroup(
             ad_modiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ad_modiLayout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addComponent(cb_libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addGroup(ad_modiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ad_modiLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(modifica))
+                    .addGroup(ad_modiLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(cb_libros, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ad_modiLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabel21)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         ad_modiLayout.setVerticalGroup(
             ad_modiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ad_modiLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addContainerGap(67, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addGap(40, 40, 40)
                 .addComponent(cb_libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(modifica)
+                .addGap(84, 84, 84))
         );
 
         jButton1.setText("eliminar el libro selecionado");
@@ -427,13 +449,10 @@ public class Principal extends javax.swing.JFrame {
         ad_elimiLayout.setHorizontalGroup(
             ad_elimiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ad_elimiLayout.createSequentialGroup()
-                .addGroup(ad_elimiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ad_elimiLayout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(jButton1))
-                    .addGroup(ad_elimiLayout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(cb_elim, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(78, 78, 78)
+                .addGroup(ad_elimiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cb_elim, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(129, Short.MAX_VALUE))
         );
         ad_elimiLayout.setVerticalGroup(
@@ -444,6 +463,17 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(94, 94, 94)
                 .addComponent(jButton1)
                 .addContainerGap(99, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout modificarLayout = new javax.swing.GroupLayout(modificar.getContentPane());
+        modificar.getContentPane().setLayout(modificarLayout);
+        modificarLayout.setHorizontalGroup(
+            modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        modificarLayout.setVerticalGroup(
+            modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -524,7 +554,7 @@ public class Principal extends javax.swing.JFrame {
                 Admin.setModal(true);
                 Admin.pack();
                 Admin.setVisible(true);
-
+                
             }
         } else {
             JOptionPane.showMessageDialog(this, "el usuario o la contraseña esta incorrecta");
@@ -554,15 +584,18 @@ public class Principal extends javax.swing.JFrame {
         try {
             libros x = new libros(titulo, descrp, punta, cop, gene, valor, edicio, autor, año);
             libs.add(x);
-            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_libros.getModel();
-            modelo.addElement(x);
-            cb_elim.setModel(modelo);
-            cb_libros.setModel(modelo);
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(ad_nuevo, "hubo un problema para crear el libro");
         }
         JOptionPane.showMessageDialog(ad_nuevo, "se agrego de forma exitosa");
-
+        nu_auto.setText("");
+        nu_publi.setText("");
+        nu_copi.setText("");
+        nu_desc.setText("");
+        nu_valor.setText("");
+        nu_edi.setText("");
+        nu_titu.setText("");
         ad_nuevo.dispose();
     }//GEN-LAST:event_nu_libroMouseClicked
 
@@ -582,32 +615,38 @@ public class Principal extends javax.swing.JFrame {
         try {
             user = cr_user.getText();
             if (user.equals("admin")) {
-
-            } else {
                 JOptionPane.showMessageDialog(crearcuenta, "no se puede llamar asi");
+            } else {
+                String cont = cr_contra.getText();
+                Date fecha = cr_fecha.getDate();
+                String num = cr_num.getText();
+                String corre = cr_corre.getText();
+                String nombre = cr_nombre.getText();
+                ArrayList<usuarios> ami = new ArrayList<>();
+                ArrayList<libros> libos = new ArrayList<>();
+                usu.add(new usuarios(user, cont, corre, nombre, corre, nombre, user, ami, libos));
+                cr_contra.setText("");
+                cr_corre.setText("");
+                crearcuenta.dispose();
+                JOptionPane.showMessageDialog(crearcuenta, "se agrego con exito");
             }
         } catch (Exception e) {
         }
+        
 
-        String cont = cr_contra.getText();
-        Date fecha = cr_fecha.getDate();
-        String num = cr_num.getText();
-        String corre = cr_corre.getText();
-        String nombre = cr_nombre.getText();
-        ArrayList<usuarios> ami = new ArrayList<>();
-        ArrayList<libros> libos = new ArrayList<>();
-        usu.add(new usuarios(user, cont, corre, nombre, corre, nombre, user, ami, libos));
-        cr_contra.setText("");
-        cr_corre.setText("");
-        crearcuenta.dispose();
     }//GEN-LAST:event_crUSUMouseClicked
 
     private void bt_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_modificarMouseClicked
-        // TODO add your handling code here:
+        llenadomodi();
+        ad_modi.setModal(true);
+        ad_modi.pack();
+        ad_modi.setVisible(true);
+
     }//GEN-LAST:event_bt_modificarMouseClicked
 
     private void bt_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_eliminarMouseClicked
         // TODO add your handling code here:
+        llenadoborra();
         ad_elimi.setModal(true);
         ad_elimi.pack();
         ad_elimi.setVisible(true);
@@ -615,17 +654,34 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         int num = cb_elim.getSelectedIndex();
-        num = num - 4;
-
         libs.remove(num);
         ad_elimi.dispose();
         JOptionPane.showMessageDialog(ad_elimi, "se elimino de forma correcta");
         ad_elimi.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void modificaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificaMouseClicked
+        modificar.setModal(true);
+        modificar.pack();
+        modificar.setVisible(true);
+    }//GEN-LAST:event_modificaMouseClicked
+
     /**
      * @param args the command line arguments
      */
+    public void llenadomodi() {
+        for (int i = 0; i < libs.size(); i++) {
+            cb_libros.addItem(libs.get(i).toString());
+        }
+    }
+    
+    public void llenadoborra() {
+        for (int i = 0; i < libs.size(); i++) {
+            cb_elim.addItem(libs.get(i).toString());
+            
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -694,6 +750,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -702,6 +759,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modifica;
+    private javax.swing.JDialog modificar;
     private javax.swing.JTextField nu_auto;
     private javax.swing.JTextField nu_copi;
     private javax.swing.JTextArea nu_desc;

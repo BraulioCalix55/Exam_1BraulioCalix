@@ -110,7 +110,7 @@ public class libros {
 
     @Override
     public String toString() {
-        return "titulo=" + titulo +", genero=" + genero ;
+        return titulo +",genero: " + genero ;
     }
 
 }
