@@ -82,10 +82,31 @@ public class Principal extends javax.swing.JFrame {
         cb_libros = new javax.swing.JComboBox<>();
         modifica = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
+        reg = new javax.swing.JButton();
         ad_elimi = new javax.swing.JDialog();
         cb_elim = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         modificar = new javax.swing.JDialog();
+        mo_nom = new javax.swing.JTextField();
+        mo_cali = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        mo_des = new javax.swing.JTextArea();
+        mo_cop = new javax.swing.JTextField();
+        mo_gen = new javax.swing.JComboBox<>();
+        mo_val = new javax.swing.JTextField();
+        mo_edi = new javax.swing.JTextField();
+        mo_autor = new javax.swing.JTextField();
+        mo_ano = new javax.swing.JTextField();
+        mo_modifi = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         ta_usu = new javax.swing.JTextField();
@@ -408,6 +429,13 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel21.setText("selecione la pelicula que quiere modificar");
 
+        reg.setText("regresar");
+        reg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout ad_modiLayout = new javax.swing.GroupLayout(ad_modi.getContentPane());
         ad_modi.getContentPane().setLayout(ad_modiLayout);
         ad_modiLayout.setHorizontalGroup(
@@ -415,14 +443,17 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(ad_modiLayout.createSequentialGroup()
                 .addGroup(ad_modiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ad_modiLayout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(modifica))
-                    .addGroup(ad_modiLayout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(cb_libros, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ad_modiLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jLabel21)))
+                        .addGroup(ad_modiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(ad_modiLayout.createSequentialGroup()
+                                .addComponent(reg)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(modifica)
+                                .addGap(16, 16, 16))
+                            .addComponent(jLabel21))))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         ad_modiLayout.setVerticalGroup(
@@ -432,9 +463,11 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel21)
                 .addGap(40, 40, 40)
                 .addComponent(cb_libros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(modifica)
-                .addGap(84, 84, 84))
+                .addGap(44, 44, 44)
+                .addGroup(ad_modiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modifica)
+                    .addComponent(reg))
+                .addGap(86, 86, 86))
         );
 
         jButton1.setText("eliminar el libro selecionado");
@@ -465,15 +498,138 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(99, Short.MAX_VALUE))
         );
 
+        mo_cali.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        mo_des.setColumns(20);
+        mo_des.setRows(5);
+        jScrollPane3.setViewportView(mo_des);
+
+        mo_gen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fantasia", "historia", "accion", "romance" }));
+
+        mo_modifi.setText("modificar");
+        mo_modifi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mo_modifiMouseClicked(evt);
+            }
+        });
+
+        jLabel22.setText("nombre");
+
+        jLabel23.setText("puntuacion");
+
+        jLabel24.setText("copias");
+
+        jLabel25.setText("genero");
+
+        jLabel26.setText("valor");
+
+        jLabel27.setText("edicion");
+
+        jLabel28.setText("autor");
+
+        jLabel29.setText("año");
+
+        jLabel30.setText("descripcion");
+
         javax.swing.GroupLayout modificarLayout = new javax.swing.GroupLayout(modificar.getContentPane());
         modificar.getContentPane().setLayout(modificarLayout);
         modificarLayout.setHorizontalGroup(
             modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(modificarLayout.createSequentialGroup()
+                .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(modificarLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mo_modifi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(modificarLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mo_gen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mo_cali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(modificarLayout.createSequentialGroup()
+                                .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(modificarLayout.createSequentialGroup()
+                                            .addGap(141, 141, 141)
+                                            .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel23)
+                                                .addComponent(jLabel24)))
+                                        .addGroup(modificarLayout.createSequentialGroup()
+                                            .addGap(5, 5, 5)
+                                            .addComponent(mo_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificarLayout.createSequentialGroup()
+                                            .addGap(5, 5, 5)
+                                            .addComponent(jLabel25)
+                                            .addGap(26, 26, 26))))
+                                .addGap(25, 25, 25)
+                                .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jLabel30)))
+                            .addComponent(mo_cop, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)))
+                .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(modificarLayout.createSequentialGroup()
+                            .addComponent(mo_autor, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                            .addGap(33, 33, 33)
+                            .addComponent(jLabel28))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, modificarLayout.createSequentialGroup()
+                            .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(mo_edi)
+                                .addComponent(mo_val, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                            .addGap(23, 23, 23)
+                            .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel27)
+                                .addComponent(jLabel26))))
+                    .addGroup(modificarLayout.createSequentialGroup()
+                        .addComponent(mo_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel29)))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         modificarLayout.setVerticalGroup(
             modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificarLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mo_val, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26)
+                    .addComponent(mo_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(modificarLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mo_edi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27))
+                        .addGap(49, 49, 49)
+                        .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mo_autor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modificarLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel30)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(46, 46, 46)
+                .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(modificarLayout.createSequentialGroup()
+                        .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mo_cali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23))
+                        .addGap(33, 33, 33)
+                        .addGroup(modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mo_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel29)
+                            .addComponent(mo_cop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24))
+                        .addGap(70, 70, 70)
+                        .addComponent(mo_gen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel25))
+                .addGap(21, 21, 21)
+                .addComponent(mo_modifi)
+                .addGap(102, 102, 102))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -653,7 +809,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_eliminarMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        int num = cb_elim.getSelectedIndex();
+        num = cb_elim.getSelectedIndex();
         libs.remove(num);
         ad_elimi.dispose();
         JOptionPane.showMessageDialog(ad_elimi, "se elimino de forma correcta");
@@ -661,10 +817,36 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void modificaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificaMouseClicked
+        mo_ano.setText(libs.get(num).getAnio());
+        mo_autor.setText(libs.get(num).getAutor());
+        mo_cop.setText(Integer.toString(libs.get(num).getCopias()));
+        mo_des.setText(libs.get(num).getDescrip());
+        mo_edi.setText(libs.get(num).getEdicion());
+        mo_nom.setText(libs.get(num).getTitulo());
+        mo_val.setText(Integer.toString(libs.get(num).getValor()));
         modificar.setModal(true);
         modificar.pack();
         modificar.setVisible(true);
     }//GEN-LAST:event_modificaMouseClicked
+
+    private void regMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regMouseClicked
+        ad_modi.dispose();
+    }//GEN-LAST:event_regMouseClicked
+
+    private void mo_modifiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mo_modifiMouseClicked
+        libs.get(num).setAnio(mo_ano.getText());
+        libs.get(num).setAutor(mo_autor.getText());
+        libs.get(num).setCopias(Integer.parseInt(mo_cop.getText()));
+        libs.get(num).setDescrip(mo_des.getText());
+        libs.get(num).setEdicion(mo_edi.getText());
+        libs.get(num).setTitulo(mo_nom.getText());
+        libs.get(num).setValor(Integer.parseInt(mo_val.getText()));
+        
+        
+        
+        JOptionPane.showMessageDialog(modificar, "se modifico de forma correcta");
+        modificar.dispose();
+    }//GEN-LAST:event_mo_modifiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -751,7 +933,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -759,6 +950,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField mo_ano;
+    private javax.swing.JTextField mo_autor;
+    private javax.swing.JComboBox<String> mo_cali;
+    private javax.swing.JTextField mo_cop;
+    private javax.swing.JTextArea mo_des;
+    private javax.swing.JTextField mo_edi;
+    private javax.swing.JComboBox<String> mo_gen;
+    private javax.swing.JButton mo_modifi;
+    private javax.swing.JTextField mo_nom;
+    private javax.swing.JTextField mo_val;
     private javax.swing.JButton modifica;
     private javax.swing.JDialog modificar;
     private javax.swing.JTextField nu_auto;
@@ -771,9 +973,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> nu_punt;
     private javax.swing.JTextField nu_titu;
     private javax.swing.JTextField nu_valor;
+    private javax.swing.JButton reg;
     private javax.swing.JPasswordField ta_contra;
     private javax.swing.JTextField ta_usu;
     // End of variables declaration//GEN-END:variables
     ArrayList<usuarios> usu = new ArrayList();
     ArrayList<libros> libs = new ArrayList();
+    int num=0;
 }
